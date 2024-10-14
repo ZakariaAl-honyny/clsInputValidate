@@ -2,14 +2,15 @@
 
 #include <iostream>
 #include <string>
-#include "clsString.h";
-#include "clsDate.h";
+#include "clsString.h"
+#include "clsDate.h"
 
 class clsInputValidate
 {
 public:
 
-	static bool IsNumberBetween(short Number, short From, short To)
+	template <typename T>
+	static T IsNumberBetween(T Number, T From, T To)
 	{
 		//this solution
 		/*if (Number < From || Number > To)
@@ -17,14 +18,15 @@ public:
 		else
 			return true;*/
 
-		//Or this solution is the same results
+			//Or this solution is the same results
 		if (Number >= From && Number <= To)
 			return true;
 		else
 			return false;
 	}
 
-	static bool IsNumberBetween(int Number, int From, int To)
+	//you don't need this functions because above we used (teplate function) to use all or any (datatype function)  
+	/*static bool IsNumberBetween(int Number, int From, int To)
 	{
 		if (Number >= From && Number <= To)
 			return true;
@@ -46,7 +48,7 @@ public:
 			return true;
 		else
 			return false;
-	}
+	}*/
 
 	bool IsStringLengthBetween(string S1, int FromLength, int ToLength)
 	{
@@ -60,7 +62,7 @@ public:
 	static bool IsDateBetween(clsDate Date, clsDate From, clsDate To)
 	{
 		//Date >= From && Date <= To
-		if (clsDate::IsDate1AfterDate2(Date, From) || clsDate::IsDate1EqualDate2(Date, From) 
+		if (clsDate::IsDate1AfterDate2(Date, From) || clsDate::IsDate1EqualDate2(Date, From)
 			&&
 			clsDate::IsDate1BeforeDate2(Date, To) || clsDate::IsDate1EqualDate2(Date, To))
 		{
@@ -68,7 +70,7 @@ public:
 		}
 
 		//Date >= To && Date <= From
-		if (clsDate::IsDate1AfterDate2(Date, To) || clsDate::IsDate1EqualDate2(Date, To) 
+		if (clsDate::IsDate1AfterDate2(Date, To) || clsDate::IsDate1EqualDate2(Date, To)
 			&&
 			clsDate::IsDate1BeforeDate2(Date, From) || clsDate::IsDate1EqualDate2(Date, From))
 		{
@@ -76,7 +78,8 @@ public:
 		}
 
 		return false;
-
+		
+		//Anther Sulotion 
 		/*if (clsDate::IsDate1AfterDate2(From, To))
 		{
 			clsDate::SwapDates(From, To);
@@ -91,9 +94,11 @@ public:
 		return true;*/
 	}
 
-	static int ReadIntNumber(string ErrorMessage = "Invalid number, enter again\n")
+	
+	template <typename T>
+	static T ReadNumber(string ErrorMessage = "Invalid number, enter again\n")
 	{
-		int Number = 0;
+		T Number = 0;
 
 		while (!(cin >> Number))
 		{
@@ -102,6 +107,7 @@ public:
 			cout << ErrorMessage;
 		}
 
+		//this Another solution
 		//while (cin.fail())
 		//{
 		//	//user didn't input a number
@@ -115,14 +121,64 @@ public:
 		return Number;
 	}
 
-	static int ReadIntNumberBetween(int From, int To, string ErrorMessage = "Numer is not within range, enter again:\n")
+	template <typename T>
+	static T ReadNumberBetween(T From, T To, string ErrorMessage = "Numer is not within range, enter again:\n")
 	{
-		int Number = ReadIntNumber();
+		T Number = ReadNumber<T>();
 
 		while (!IsNumberBetween(Number, From, To))
 		{
 			cout << ErrorMessage;
-			Number = ReadIntNumber();
+			Number = ReadNumber<T>();
+		}
+		return Number;
+	}
+
+	//you don't need this functions because above we used (teplate function) to use all or any (datatype function)
+	/*static short ReadShortNumber(string ErrorMessage = "Invalid number, enter again\n")
+	{
+		short Number = 0;
+		while (!(cin >> Number))
+		{
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+			cout << ErrorMessage;
+		}
+		return Number;
+	}
+
+	static short ReadShortNumberBetween(short From, short To, string ErrorMessage = "Numer is not within range, enter again:\n")
+	{
+		short Number = ReadShortNumber();
+
+		while (!IsNumberBetween(Number, From, To))
+		{
+			cout << ErrorMessage;
+			Number = ReadShortNumber();
+		}
+		return Number;
+	}
+
+	static float ReadfloatNumber(string ErrorMessage = "Invalid number, enter again\n")
+	{
+		float Number = 0;
+		while (!(cin >> Number))
+		{
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+			cout << ErrorMessage;
+		}
+		return Number;
+	}
+
+	static float ReadfloatNumberBetween(float From, float To, string ErrorMessage = "Numer is not within range, enter again:\n")
+	{
+		float Number = ReadfloatNumber();
+
+		while (!IsNumberBetween(Number, From, To))
+		{
+			cout << ErrorMessage;
+			Number = ReadfloatNumber();
 		}
 		return Number;
 	}
@@ -149,10 +205,19 @@ public:
 			Number = ReadDblNumber();
 		}
 		return Number;
-	}
+	}*/
 
 	static bool IsValidDate(clsDate Date)
 	{
 		return clsDate::IsValidDate(Date);
 	}
+
+	static string ReadString()
+	{
+		string S1 = "";
+		// Usage of std::ws will extract all the whitespace character
+		getline(cin >> ws, S1);
+		return S1;
+	}
 };
+
