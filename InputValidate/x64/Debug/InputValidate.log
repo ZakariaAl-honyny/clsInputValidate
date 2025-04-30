@@ -1,0 +1,24 @@
+﻿  Source.cpp
+C:\Users\ALlahabi\Desktop\Pro\InputValidate\Source.cpp(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\ALlahabi\Desktop\Pro\InputValidate\clsString.h(39,19): warning C4267: 'return': conversion from 'size_t' to 'short', possible loss of data
+  (compiling source file 'Source.cpp')
+  
+C:\Users\ALlahabi\Desktop\Pro\InputValidate\clsString.h(44,23): warning C4267: 'return': conversion from 'size_t' to 'short', possible loss of data
+  (compiling source file 'Source.cpp')
+  
+C:\Users\ALlahabi\Desktop\Pro\InputValidate\clsString.h(151,20): warning C4267: 'return': conversion from 'size_t' to 'short', possible loss of data
+  (compiling source file 'Source.cpp')
+  
+C:\Users\ALlahabi\Desktop\Pro\InputValidate\clsString.h(328,24): warning C4267: '=': conversion from 'size_t' to 'short', possible loss of data
+  (compiling source file 'Source.cpp')
+  
+C:\Users\ALlahabi\Desktop\Pro\InputValidate\clsString.h(359,24): warning C4267: '=': conversion from 'size_t' to 'short', possible loss of data
+  (compiling source file 'Source.cpp')
+  
+C:\Users\ALlahabi\Desktop\Pro\InputValidate\clsString.h(391,24): warning C4267: '=': conversion from 'size_t' to 'short', possible loss of data
+  (compiling source file 'Source.cpp')
+  
+C:\Users\ALlahabi\Desktop\Pro\InputValidate\clsString.h(437,16): warning C4267: 'initializing': conversion from 'size_t' to 'short', possible loss of data
+  (compiling source file 'Source.cpp')
+  
+  InputValidate.vcxproj -> C:\Users\ALlahabi\Desktop\Pro\InputValidate\x64\Debug\InputValidate.exe
